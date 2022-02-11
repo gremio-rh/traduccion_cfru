@@ -9,7 +9,7 @@ Normal
 Lucha
 
 #org @NAME_FLYING
-Flying
+Volador
 
 #org @NAME_POISON
 Veneno
@@ -21,13 +21,13 @@ Tierra
 Roca
 
 #org @NAME_BUG
-Bug
+Bicho
 
 #org @NAME_GHOST
-Ghost
+Fanta
 
 #org @NAME_STEEL
-Steel
+Acero
 
 #org @NAME_TYPELESS
 ???
@@ -45,16 +45,16 @@ Grass
 Electr
 
 #org @NAME_PSYCHC
-Psychc
+Psíqui
 
 #org @NAME_ICE
-Ice
+Hielo
 
 #org @NAME_DRAGON
 Dragon
 
 #org @NAME_DARK
-Dark
+Sini
 
 #org @FAIRY_TYPE_ALIGNMENT_1
 -
