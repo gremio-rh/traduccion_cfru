@@ -374,8 +374,8 @@ const bool8 gMoldBreakerIgnoredAbilities[] =
 
 const u16 gWeatherContinuesStringIds[] =
 {
-	STRINGID_ITISRAINING,		//No Weather
-	STRINGID_ITISRAINING, 		//Sunnny Weather with Clouds in Water
+	STRINGID_ITISRAINING,		//Sin clima
+	STRINGID_ITISRAINING, 		//Clima soleado con nubes en el agua
 	STRINGID_ITISRAINING,		//Regular Weather
 	STRINGID_ITISRAINING,   	//Rainy Weather
 	STRINGID_STARTEDHAIL, 		//Light Snow
