@@ -376,20 +376,20 @@ const u16 gWeatherContinuesStringIds[] =
 {
 	STRINGID_ITISRAINING,		//Sin clima
 	STRINGID_ITISRAINING, 		//Clima soleado con nubes en el agua
-	STRINGID_ITISRAINING,		//Regular Weather
-	STRINGID_ITISRAINING,   	//Rainy Weather
-	STRINGID_STARTEDHAIL, 		//Light Snow
-	STRINGID_ITISRAINING,		//Thunderstorm
-	STRINGID_CUSTOMSTRING, 		//Steady Mist
-	STRINGID_STARTEDHAIL, 		//Steady Snowing
-	STRINGID_SANDSTORMISRAGING,	//Sandstorm
-	STRINGID_CUSTOMSTRING, 		//Mist from Top Right Corner
-	STRINGID_CUSTOMSTRING, 		//Dense Bright Mist
-	STRINGID_ITISRAINING,		//Cloudy
-	STRINGID_SUNLIGHTSTRONG, 	//Drought
-	STRINGID_DOWNPOURSTARTED, 	//Downpour
-	STRINGID_CUSTOMSTRING, 		//Underwater Mist
-	STRINGID_ITISRAINING		//???
+	STRINGID_ITISRAINING,		//Clima Regular
+	STRINGID_ITISRAINING,   	//Clima lluvioso
+	STRINGID_STARTEDHAIL, 		//Nieve ligera
+	STRINGID_ITISRAINING,		//Tormenta
+	STRINGID_CUSTOMSTRING, 		//Niebla constante
+	STRINGID_STARTEDHAIL, 		//nevando constantemente
+	STRINGID_SANDSTORMISRAGING,	//Tormenta de arena
+	STRINGID_CUSTOMSTRING, 		//Niebla desde la esquina superior derecha
+	STRINGID_CUSTOMSTRING, 		//Niebla densa y brillante
+	STRINGID_ITISRAINING,		//Nublada
+	STRINGID_SUNLIGHTSTRONG, 	//Sequía
+	STRINGID_DOWNPOURSTARTED, 	//Aguacero
+	STRINGID_CUSTOMSTRING, 		//Niebla submarina
+	STRINGID_ITISRAINING		//¿¿??
 };
 
 const u16 gFlashFireStringIds[] =
@@ -448,12 +448,12 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 		if ((gBattleTypeFlags & (BATTLE_TYPE_SCRIPTED_WILD_1 | BATTLE_TYPE_GHOST)) == BATTLE_TYPE_GHOST)
 		{
 			if (SIDE(bank) == B_SIDE_OPPONENT)
-				return FALSE; //Ghost's abilities don't activate
+				return FALSE; //Las habilidades de Ghost no se activan.
 
-			switch (gLastUsedAbility) {		//All of these abilities either use or make changes to
-				case ABILITY_INTIMIDATE:	//the unidentified Ghost. In FR, only Intimidate and
-				case ABILITY_TRACE:			//Trace were included in this list. It has thus been
-				case ABILITY_DOWNLOAD:		//been expanded to support newer abilities.
+			switch (gLastUsedAbility) {		//Todas estas habilidades usan o hacen cambios en
+				case ABILITY_INTIMIDATE:	//El Fantasma no identificado. En FR, solo Intimidar y
+				case ABILITY_TRACE:			//Rastro se incluyeron en esta lista. así ha sido
+				case ABILITY_DOWNLOAD:		//se ha ampliado para admitir habilidades más nuevas.
 				case ABILITY_UNNERVE:
 				case ABILITY_ANTICIPATION:
 				case ABILITY_FOREWARN:
@@ -477,7 +477,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			case ABILITY_FRISK:
 				gStatuses3[bank] |= STATUS3_SWITCH_IN_ABILITY_DONE;
 				break;
-			case ABILITY_TRACE: //Trace is the only ability that activates after a U-Turn + faint switch-in
+			case ABILITY_TRACE: //Rastro es la única habilidad que se activa después de un U-Turn + un débil cambio.
 				return FALSE;
 		}
 	}
@@ -673,7 +673,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 
 		case ABILITY_TRACE: ;
 			u8 target2;
-			side = (GetBattlerPosition(bank) ^ BIT_SIDE) & BIT_SIDE; // side of the opposing pokemon
+			side = (GetBattlerPosition(bank) ^ BIT_SIDE) & BIT_SIDE; // Lado del pokemon contrario
 			target1 = GetBattlerAtPosition(side);
 			target2 = GetBattlerAtPosition(side + BIT_FLANK);
 			if (IS_DOUBLE_BATTLE)
@@ -696,7 +696,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					effect++;
 				}
 			}
-			else //Single Battle
+			else //Batalla individual
 			{
 				if (*GetAbilityLocation(target1) && gBattleMons[target1].hp)
 				{
@@ -917,14 +917,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			u8 partner = PARTNER(foe);
 			u8 skipFoe = 0xFF;
 
-			//Deal with a Red Card switch-in.
+			//Lidiar con un cambio de tarjeta roja.
 			if (gForceSwitchHelper == Force_Switch_Red_Card)
 			{
 				skipFoe = gNewBS->originalTargetBackup;
 
-				if (IS_DOUBLE_BATTLE && partner == skipFoe) //The second Frisk target should be skipped
+				if (IS_DOUBLE_BATTLE && partner == skipFoe) //El segundo objetivo de Frisk debe omitirse
 				{
-					//Make the skipped target the first one
+					//Hacer que el objetivo omitido sea el primero
 					u8 temp = partner;
 					partner = foe;
 					foe = temp;
@@ -1355,7 +1355,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 						} while (statToLower == statToRaise || STAT_STAGE(bank, statToLower) == 0);
 
 						gBattleScripting.statChanger = statToRaise | INCREASE_2;
-						gBattleCommunication[MOVE_EFFECT_BYTE] = statToLower; //Save stat to lower in move effect byte
+						gBattleCommunication[MOVE_EFFECT_BYTE] = statToLower; //Guardar estadística para bajar en el byte de efecto de movimiento
 						scriptPtr = BattleScript_MoodyRegular;
 					}
 
@@ -1378,7 +1378,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					if (!(gBattleMons[bank].status1 & STATUS1_SLEEP))
 						gDisableStructs[bank].truantCounter ^= 1;
 					else
-						gDisableStructs[bank].truantCounter = 0; //Being asleep resets the Truant counter
+						gDisableStructs[bank].truantCounter = 0; //Estar dormido restablece el contador de ausente
 					break;
 
 				case ABILITY_HARVEST:
@@ -1386,9 +1386,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					{
 						if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY && ITEM_EFFECT(bank) != ITEM_EFFECT_UTILITY_UMBRELLA) //Yeah...that'll never happen
 						{
-							//100% chance
+							//100% oportunidad
 						}
-						else //No Sun
+						else //sin sol
 						{
 							if (Random() % 100 < 50)
 								break;
@@ -1405,7 +1405,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					if (itemBank != 0xFF)
 					{
 						RemoveBankFromPickupStack(itemBank);
-						if (CONSUMED_ITEMS(itemBank)) //This shouldn't be empty but just in case
+						if (CONSUMED_ITEMS(itemBank)) //Esto no debería estar vacío, por si acaso
 						{
 							gBattleMons[bank].item = CONSUMED_ITEMS(itemBank);
 							EmitSetMonData(0, REQUEST_HELDITEM_BATTLE, 0, 2, &gBattleMons[bank].item);
@@ -1460,20 +1460,20 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					if (!(gStatuses3[bank] & (STATUS3_SKY_DROP_ANY))
 					&& gNewBS->turnDamageTaken[bank] > 0
 					&& gBattleMons[bank].hp <= gBattleMons[bank].maxHP / 2
-					&& gBattleMons[bank].hp + gNewBS->turnDamageTaken[bank] > gBattleMons[bank].maxHP / 2) //Fell from end turn damage
+					&& gBattleMons[bank].hp + gNewBS->turnDamageTaken[bank] > gBattleMons[bank].maxHP / 2) //Cayó del daño del turno final
 					{
 						gBattleScripting.bank = gBankSwitching = bank;
 						BattleScriptPushCursorAndCallback(BattleScript_EmergencyExitEnd3);
 						effect = 1;
 					}
 
-					gNewBS->turnDamageTaken[bank] = 0; //Reset to prevent accidental triggering
+					gNewBS->turnDamageTaken[bank] = 0; //Restablecer para evitar disparos accidentales
 				}
 			}
 			break;
 
 		case ABILITYEFFECT_MOVES_BLOCK: // 2
-			if (gBankAttacker != bank) //Can't block against self
+			if (gBankAttacker != bank) //No se puede bloquear contra uno mismo
 			{
 				switch (gLastUsedAbility) {
 					case ABILITY_SOUNDPROOF:
@@ -1491,8 +1491,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 							effect = 1;
 						break;
 
-					case ABILITY_DAZZLING: //Cannot use
-					case ABILITY_QUEENLYMAJESTY: //Cannot use
+					case ABILITY_DAZZLING: //No se puede utilizar
+					case ABILITY_QUEENLYMAJESTY: //No se puede utilizar
 						if (PriorityCalc(gBankAttacker, ACTION_USE_MOVE, move) > 0)
 							effect = 2;
 						break;
@@ -1519,7 +1519,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			break;
 
 		case ABILITYEFFECT_MOVES_BLOCK_PARTNER: //0x14
-			if (gBankAttacker != PARTNER(bank)) //Can't block against partner
+			if (gBankAttacker != PARTNER(bank)) //No se puede bloquear contra el compañero
 			{
 				switch (gLastUsedAbility) {
 					case ABILITY_DAZZLING:
@@ -1583,7 +1583,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			}
 
 			switch (effect) {
-				case 1: // Restore HP ability
+				case 1: // Restaurar la capacidad de PS
 					if (BATTLER_MAX_HP(bank) || IsHealBlocked(bank))
 					{
 						if ((gProtectStructs[gBankAttacker].notFirstStrike))
@@ -1603,7 +1603,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					}
 					break;
 
-				case 2: // Boost Stat ability
+				case 2: // Aumentar la capacidad de estadísticas
 					if (gBattleMons[bank].statStages[statId - 1] >= STAT_STAGE_MAX)
 					{
 						if ((gProtectStructs[gBankAttacker].notFirstStrike))
@@ -1622,7 +1622,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					}
 					break;
 
-				case 3: //Flash Fire
+				case 3: //Incendio repentino
 					if (!(gBattleResources->flags->flags[bank] & RESOURCE_FLAG_FLASH_FIRE))
 						gBattleCommunication[MULTISTRING_CHOOSER] = 0;
 					else
@@ -1635,8 +1635,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			}
 
 			break;
-		case ABILITYEFFECT_CONTACT: //After being hit by a move. Not necessarilly contact.
-			if (SheerForceCheck() && gLastUsedAbility != ABILITY_ILLUSION) //Sheer Force negates all these abilities
+		case ABILITYEFFECT_CONTACT: //Después de ser golpeado por un movimiento. No necesariamente contacto.
+			if (SheerForceCheck() && gLastUsedAbility != ABILITY_ILLUSION) //Sheer Force niega todas estas habilidades
 				break;
 
 			gBattleScripting.bank = bank;
@@ -1699,7 +1699,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 							if (CanBePoisoned(gBankAttacker, bank, TRUE))
 								++effect;
 							break;
-						case MOVE_EFFECT_BURN: //Gets changed to Paralysis
+						case MOVE_EFFECT_BURN: //Se cambia a Parálisis
 							gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
 							if (CanBeParalyzed(gBankAttacker, TRUE))
 								++effect;
@@ -1711,7 +1711,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 						gBattleCommunication[MOVE_EFFECT_BYTE] |= MOVE_EFFECT_AFFECTS_USER;
 						BattleScriptPushCursor();
 						gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-						gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
+						gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Protección comprobada anteriormente
 					}
 					else
 						gBattleCommunication[MOVE_EFFECT_BYTE] = 0;
@@ -1730,7 +1730,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_POISON;
 					BattleScriptPushCursor();
 					gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
+					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Protección comprobada anteriormente
 					effect++;
 				}
 				break;
@@ -1747,7 +1747,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_PARALYSIS;
 					BattleScriptPushCursor();
 					gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
+					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Protección comprobada anteriormente
 					effect++;
 				}
 				break;
@@ -1764,7 +1764,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 					gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_BURN;
 					BattleScriptPushCursor();
 					gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
+					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Protección comprobada anteriormente
 					effect++;
 				}
 				break;
@@ -1931,7 +1931,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 				&& TOOK_DAMAGE(bank)
 				&& BATTLER_ALIVE(bank)
 				&& gBattleMons[bank].hp < gBattleMons[bank].maxHP / 2
-				&& gBattleMons[bank].hp + gHpDealt > gBattleMons[bank].maxHP / 2 //Hp fell below half
+				&& gBattleMons[bank].hp + gHpDealt > gBattleMons[bank].maxHP / 2 //Los Ps cayeron por debajo de la mitad
 				&& gBattleMons[bank].statStages[STAT_SPATK - 1] < 12)
 				{
 					gBattleScripting.statChanger = STAT_SPATK | INCREASE_1;
@@ -2134,13 +2134,13 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 				{
 					switch (effect)
 					{
-					case 1: // status cleared
+					case 1: //  borrar estado
 						gBattleMons[bank].status1 = 0;
 						break;
-					case 2: // get rid of confusion
+					case 2: // deshacerse de la confusión
 						gBattleMons[bank].status2 &= ~(STATUS2_CONFUSION);
 						break;
-					case 3: // get rid of infatuation and taunt
+					case 3: // deshacerse del enamoramiento y de taunt
 						gDisableStructs[bank].tauntTimer = 0;
 						gBattleMons[bank].status2 &= ~(STATUS2_INFATUATION);
 						break;
@@ -2161,7 +2161,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			if (gLastUsedAbility == ABILITY_SYNCHRONIZE
 			&& gNewBS->synchronizeTarget[bank] > 0)
 			{
-				if (bank != gNewBS->synchronizeTarget[bank] - 1) //Didn't status itself
+				if (bank != gNewBS->synchronizeTarget[bank] - 1) //No se definió a sí mismo
 				{
 					gHitMarker &= ~(HITMARKER_SYNCHRONISE_EFFECT);
 					gBattleStruct->synchronizeMoveEffect &= ~(MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN);
@@ -2355,9 +2355,9 @@ static u8 ActivateWeatherAbility(u16 flags, u16 item, u8 bank, u8 animArg, u8 st
 	#ifdef INFINITE_WEATHER
 		gBattleWeather = flags;
 		gWishFutureKnock.weatherDuration = 0;
-		++item; //So it compiles warning free
+		++item; //Entonces compila sin advertencias
 	#else
-		gBattleWeather = (flags & ~(WEATHER_PERMANENT_ANY)); //Remove any weather permanence
+		gBattleWeather = (flags & ~(WEATHER_PERMANENT_ANY)); //Eliminar cualquier permanencia climática
 		if (ITEM_EFFECT(bank) == item)
 			gWishFutureKnock.weatherDuration = 8;
 		else
@@ -2386,7 +2386,7 @@ static u8 TryActivateTerrainAbility(u8 terrain, u8 anim, u8 bank)
 	u8 effect = 0;
 
 	if (gBattleTypeFlags & BATTLE_TYPE_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_TERRAIN)
-		return effect; //Can't be removed
+		return effect; //no se puede quitar
 
 	if (gTerrainType != terrain)
 	{
@@ -2417,7 +2417,7 @@ static u8 TryActivateTerrainAbility(u8 terrain, u8 anim, u8 bank)
 
 		gBattleScripting.animArg1 = anim;
 		gBattleScripting.bank = bank;
-		*((u32*) gSeedHelper) = (u32) gBattleStringLoader; //Backup String
+		*((u32*) gSeedHelper) = (u32) gBattleStringLoader; //Cadena de respaldo
 		BattleScriptPushCursorAndCallback(BattleScript_TerrainFromAbility);
 		++effect;
 	}
@@ -2444,7 +2444,7 @@ static bool8 ImmunityAbilityCheck(u8 bank, u32 status, u8* string)
 
 static bool8 AllMainStatsButOneAreMinned(bank_t bank)
 {
-	for (u8 i = STAT_ATK, counter = 0; i <= STAT_SPDEF; ++i) //No Acc of Evsn
+	for (u8 i = STAT_ATK, counter = 0; i <= STAT_SPDEF; ++i) //Sin cuenta de Evsn
 	{
 		if (STAT_STAGE(bank, i) > 0)
 		{
@@ -2466,12 +2466,12 @@ void ApplyFlashFireBoost(void)
 	gBattleResources->flags->flags[gBattleScripting.bank] |= RESOURCE_FLAG_FLASH_FIRE;
 }
 
-//Illusion Updates////////////////////////////////////////////////////////////////////////////////////
+//Actualizaciones de ilusión////////////////////////////////////////////////////////////////////////////////////
 pokemon_t* UpdateNickForIllusion(pokemon_t* mon)
 {
 	u8 bank = GetBankFromPartyData(mon);
 
-	if (bank >= 6) //Safety Measure
+	if (bank >= 6) //Medida de seguridad
 		return mon;
 
 	return GetIllusionPartyData(bank);
@@ -2493,8 +2493,8 @@ species_t TryUpdateIllusionAltitude(u8 bank)
 	return GetIllusionPartyData(bank)->species;
 }
 
-//Ability Pop-Up//////////////////////////////////////////////////////////////////////////////////////
-//Credit to the Emerald Battle Engine Upgrade 2.0 by DizzyEgg for the original code.
+//Ventana emergente de habilidad//////////////////////////////////////////////////////////////////////////////////////
+//Crédito a Emerald Battle Engine Upgrade 2.0 de DizzyEgg por el código original.
 
 // for sprite
 #define tOriginalX	  data[0]
@@ -2504,7 +2504,7 @@ species_t TryUpdateIllusionAltitude(u8 bank)
 #define tBattlerId	  data[4]
 #define tIsMain		 data[5]
 
-// for task
+// para tarea
 #define tSpriteId1	  data[6]
 #define tSpriteId2	  data[7]
 
@@ -2581,16 +2581,16 @@ static const struct SpriteTemplate sSpriteTemplate_AbilityPopUp2 =
 
 static const s16 sAbilityPopUpCoordsDoubles[MAX_BATTLERS_COUNT][2] =
 {
-	{29, 80}, // player left
-	{186, 19}, // opponent left
-	{29, 97}, // player right
-	{186, 36}, // opponent right
+	{29, 80}, // jugador a la izquierda
+	{186, 19}, // oponente a la izquierda
+	{29, 97}, // jugador a la derecha
+	{186, 36}, // oponente a la derecha
 };
 
 static const s16 sAbilityPopUpCoordsSingles[MAX_BATTLERS_COUNT][2] =
 {
-	{29, 97}, // player
-	{186, 57}, // opponent
+	{29, 97}, // jugador
+	{186, 57}, // oponente
 };
 
 static u8* AddTextPrinterAndCreateWindowOnAbilityPopUp(const u8* str, u32 x, u32 y, u32 color1, u32 color2, u32 color3, u32* windowId)
@@ -2673,7 +2673,7 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
 	{
 		monName[i] = nick[i];
 
-		if (nick[i] == 0xFF || i + 1 == POKEMON_NAME_LENGTH) //End of string
+		if (nick[i] == 0xFF || i + 1 == POKEMON_NAME_LENGTH) //fin de cadena
 			break;
 	}
 
@@ -2684,10 +2684,10 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
 
 	lastChar = *(textPtr - 1);
 
-	//Make the string say "[NAME]'s" instead of "[NAME]"
+	//Haz que la cadena diga "[NAME]'s" en vez de "[NAME]"
 	textPtr[0] = 0xB4; //'
 	++textPtr;
-	if (lastChar != PC_S && lastChar != PC_s) //Proper grammar for names ending in "s"
+	if (lastChar != PC_S && lastChar != PC_s) //Gramática adecuada para los nombres que terminan en "s"
 	{
 		textPtr[0] = 0xE7; //s
 		++textPtr;
@@ -2715,11 +2715,11 @@ static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2)
 }
 
 #define PIXEL_COORDS_TO_OFFSET(x, y)(			\
-/*Add tiles by X*/								\
+/*Añadir mosaicos por X*/						\
 ((y / 8) * 32 * 8)								\
-/*Add tiles by X*/								\
+/*Añadir mosaicos por X*/						\
 + ((x / 8) * 32)								\
-/*Add pixels by Y*/								\
+/*Añadir píxeles por Y*/						\
 + ((((y) - ((y / 8) * 8))) * 4)					\
 /*Add pixels by X*/								\
 + ((((x) - ((x / 8) * 8)) / 2)))
@@ -2771,7 +2771,7 @@ static const u16 sOverwrittenPixelsTable[][2] =
 	{PIXEL_COORDS_TO_OFFSET(0, 25), 3},
 	{PIXEL_COORDS_TO_OFFSET(0, 26), 3},
 
-//Second Row Of Image
+//Segunda fila de imagen
 	{PIXEL_COORDS_TO_OFFSET(0, 45), 8},
 	{PIXEL_COORDS_TO_OFFSET(0, 46), 8},
 	{PIXEL_COORDS_TO_OFFSET(0, 47), 8},
@@ -2834,7 +2834,7 @@ void AnimTask_LoadAbilityPopUp(u8 taskId)
 {
 	const s16 (*coords)[2];
 	u8 spriteId1, spriteId2, battlerPosition, destroyerTaskId;
-	u8 ability = gAbilityPopUpHelper; //Preceded by transfer of proper ability
+	u8 ability = gAbilityPopUpHelper; //Precedido por la transferencia de la habilidad apropiada
 
 	LoadSpriteSheet((const struct SpriteSheet*) &gBattleAnimPicTable[ANIM_TAG_ABILITY_POP_UP - ANIM_SPRITES_START]);
 	LoadSpritePalette((const struct SpritePalette*) &gBattleAnimPaletteTable[ANIM_TAG_ABILITY_POP_UP - ANIM_SPRITES_START]);
@@ -2901,10 +2901,10 @@ void AnimTask_LoadAbilityPopUp(u8 taskId)
 
 static void SpriteCb_AbilityPopUp(struct Sprite* sprite)
 {
-	if (!sprite->tHide) // Show
+	if (!sprite->tHide) // Mostrar
 	{
 		if (sprite->tIsMain && ++sprite->tFrames == 4)
-			PlaySE(0x80); //Also could be 0xBA
+			PlaySE(0x80); //También podría ser 0xBA
 		if ((!sprite->tRightToLeft && (sprite->pos1.x -= 4) <= sprite->tOriginalX)
 		||   (sprite->tRightToLeft && (sprite->pos1.x += 4) >= sprite->tOriginalX))
 		{
@@ -2913,7 +2913,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite* sprite)
 			sprite->tFrames = 1;
 		}
 	}
-	else // Hide
+	else // Ocultar
 	{
 		if (sprite->tFrames == 0)
 		{
@@ -3011,7 +3011,7 @@ void TryRemoveIntimidateAbilityPopUp(void)
 		BattleScriptPushCursor();
 		gBattlescriptCurrInstr = BattleScript_AbilityPopUpRevert - 5;
 		gBattleScripting.bank = gNewBS->intimidateActive - 1;
-		gNewBS->intimidateActive -= 10; //Intimidate is still active but pop-up is hidden
+		gNewBS->intimidateActive -= 10; //Intimidar todavía está activo pero la ventana emergente está oculta
 	}
 }
 
@@ -3035,7 +3035,7 @@ void RemoveIntimidateActive(void)
 
 void TryReactiveIntimidatePopUp(void)
 {
-	if (gNewBS->intimidateActive < 0) //Pop-up was hidden due to ability like Clear Body
+	if (gNewBS->intimidateActive < 0) //La ventana emergente estaba oculta debido a una habilidad como Clear Body
 	{
 		BattleScriptPushCursor();
 		gBattlescriptCurrInstr = BattleScript_AbilityPopUp - 5;
@@ -3052,9 +3052,9 @@ void LoadIntimidateBankIntoTarget(void)
 		gBankTarget = (gNewBS->intimidateActive + 10) - 1;
 }
 
-//Switch-in abilities that affect a knocked out target
-//after using U-Turn/Volt Switch are delayed until a
-//new Pokemon is sent out.
+//Habilidades de cambio que afectan a un objetivo noqueado
+//después de usar el interruptor de giro en U/voltaje se retrasan hasta que
+//Se envía un nuevo Pokémon.
 void SetSkipCertainSwitchInAbilities(void)
 {
 	if (BATTLER_ALIVE(FOE(gBankAttacker)))
@@ -3063,6 +3063,6 @@ void SetSkipCertainSwitchInAbilities(void)
 	if (IS_DOUBLE_BATTLE && BATTLER_ALIVE(PARTNER(FOE(gBankAttacker))))
 		return;
 
-	//Only set the bit if no enemies are alive on the field
+	//Solo establece el bit si no hay enemigos vivos en el campo.
 	gNewBS->skipCertainSwitchInAbilities = TRUE;
 }
