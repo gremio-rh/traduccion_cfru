@@ -1,62 +1,62 @@
 #org @gText_SwapItemsPart1
-[BUFFER1]'s [BUFFER2] and
+[BUFFER1]'s [BUFFER2] y
 
 #org @gText_SwapItemsPart2
-\n[BUFFER1]'s [BUFFER2]\lwere swapped![PAUSE_UNTIL_PRESS]
+\n[BUFFER1]'s [BUFFER2]\l¡fueron intercambiados![PAUSE_UNTIL_PRESS]
 
 #org @gMenuText_Move
-Move
+Mover
 
 #org @gText_MoveItemWhere
-Move to where?
+Mover a donde?
 
 #org @gText_FieldMoveDesc_RockClimb
-Scale rocky cliffs.
+Escala de acantilados rocosos.
 
 #org @gText_FieldMoveDesc_Defog
-Remove foggy weather.
+Eliminar el tiempo brumoso.
 
 #org @gText_FieldMoveDesc_Dive
-Dive underwater.
+Bucear bajo el agua.
 
 #org @gText_EVReducingBerryBothEffects
-[BUFFER1] became more friendly.\nHowever, its base [BUFFER2] fell![PAUSE_UNTIL_PRESS]
+[BUFFER1] se volvió más amable.\nSin embargo, su base [BUFFER2] ¡cayó![PAUSE_UNTIL_PRESS]
 
 #org @gText_EVReducingBerryLoweredStat
-[BUFFER1] adores you!\nIts base [BUFFER2] fell![PAUSE_UNTIL_PRESS]
+[BUFFER1] ¡Te adora!\nSu base [BUFFER2] ¡cayó![PAUSE_UNTIL_PRESS]
 
 #org @gText_EVReducingBerryIncreasedFriendship
-[BUFFER1] became more friendly.\nIts base [BUFFER2] can't go lower.[PAUSE_UNTIL_PRESS]
+[BUFFER1] se volvió más amable.\nSu base [BUFFER2] No se puede bajar.[PAUSE_UNTIL_PRESS]
 
 #org @gText_FormChangeItem
-[BUFFER1] changed Forme![PAUSE_UNTIL_PRESS]
+[BUFFER1] cambio para mi![PAUSE_UNTIL_PRESS]
 
 #org @gText_DNASplicersFuseWithWhich
-Fuse with which Pok\emon?[PAUSE_UNTIL_PRESS]
+Fucionar con el Pok\emon?[PAUSE_UNTIL_PRESS]
 
 #org @gText_AlreadyHaveFused
-You already have a [BUFFER1]\nfused with a [BUFFER2].[PAUSE_UNTIL_PRESS]
+Ya tienes un [BUFFER1]\nfusionado con un [BUFFER2].[PAUSE_UNTIL_PRESS]
 
 #org @gText_NoSpaceForDefuse
-You have no room to\nseparate the Pok\emon.[PAUSE_UNTIL_PRESS]
+No tienes espacio para\nseparar el Pok\emon.[PAUSE_UNTIL_PRESS]
 
 #org @gText_CantFuseWithPokemon
-It cannot be fused with\nthat Pok\emon.[PAUSE_UNTIL_PRESS]
+No se puede fusionar con\nEse Pok\emon.[PAUSE_UNTIL_PRESS]
 
 #org @gText_AbilityCapsuleOfferChange
-Change [BUFFER1]'s Ability\nto [BUFFER2]?
+Cambiar [BUFFER1]'s habilidad\npara [BUFFER2]?
 
 #org @gText_AbilityCapsuleChangedAbility
-[BUFFER1]'s Ability has been\nchanged to [BUFFER2].[PAUSE_UNTIL_PRESS]
+[BUFFER1]La habilidad ha sido\ncambiada a [BUFFER2].[PAUSE_UNTIL_PRESS]
 
 #org @gText_MaxPowderOfferGive
-Give the Gigantamax factor to\n[BUFFER1]?
+Dar el factor gigantamax a\n[BUFFER1]?
 
 #org @gText_MaxPowderOfferRevert
-Remove the Gigantamax factor from\n[BUFFER1]?
+Retire el factor gigantamax de\n[BUFFER1]?
 
 #org @gText_MaxPowderAllowsGigantamax
-[BUFFER1] can now Gigantamax![PAUSE_UNTIL_PRESS]
+[BUFFER1]¡Ahora puede Gigantamax![PAUSE_UNTIL_PRESS]
 
 #org @gText_MaxPowderRemovesGigantamax
-[BUFFER1] can no longer Gigantamax.[PAUSE_UNTIL_PRESS]
+[BUFFER1]Ya no se puede gigantamax.[PAUSE_UNTIL_PRESS]
