@@ -1,41 +1,41 @@
 #include "src/config.h"
 
-//Notice the extra whitespace character after the "\p"s. Without it, the message won't disappear from the screen when the player presses A.
+//Observe el carácter de espacio en blanco extra después de la "\p"s. Sin él, el mensaje no desaparecerá de la pantalla cuando el jugador presiona A.
 
 #org @gText_DefaultTrainerDynamaxMsg
-Time to Dynamax!\p 
+¡Tiempo para Dynamáx!\p
 
 #org @gText_TestTrainerDynamaxMsg
-I now shall unleash the power\nof Dynamax!\p 
+Ahora desaté el poder\n¡De Dynamáx!\p 
 
-//For Pokemon Unbound - Feel free to remove, and do not place strings below
+//Para pokemon sin unir - Siéntase libre de eliminar, y no coloque las cadenas de abajo
 #ifdef UNBOUND
 
 #org @sText_MirskleFirstMonDown
-Whoaaaaa[.]\nThat was intense[.]\p 
+Whoaaaaa[.]\nEso fue intenso[.]\p 
 
 #org @sText_VegaLastSwitchIn
-Prepare yourself for my trump card.\p 
+Prepárate para mi tarjeta de triunfo.\p 
 
 #org @sText_AliceLastSwitchIn
-It's time for you to fly high,\n[FD][06]!\p 
+Es hora de que vuele alto,\n[FD][06]!\p 
 
 #org @sText_MelLastSwitchIn
-Fight like the roaring waterfall\nbehind us, [FD][06]!\p 
+Lucha como la cascada rugida.\ndetrás de nosotros, [FD][06]!\p 
 
 #org @sText_GalavanLastSwitchIn
-Ha ha ha ha!\nIt ain't over yet!\p 
+Ja ja ja ja ja!\n¡No ha terminado todavía!\p 
 
 #org @sText_TessyLastSwitchIn
-It's tahm for the real fight,\nI reckon'!\p
+Es tahm por la verdadera pelea,\nCreo que'!\p
 
 #org @sText_Zeph1LowHP
-Impossible[.]\p 
+Imposible[.]\p 
 
 #org @sText_Zeph2LowHP
-No!\nI can't lose again!\p 
+No!\n¡No puedo perder de nuevo!\p 
 
 #org @sText_MaximaLastSwitchIn
-The power of Mega Evolution[.]\nCan you feel it within your reach?\p 
+El poder de la mega evolución.[.]\n¿Puedes sentirlo a tu alcance?\p 
 
 #endif
